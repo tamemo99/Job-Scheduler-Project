@@ -11,9 +11,9 @@ Semesterprojekt 6: Serverless Distributed Data Processing Project
 Structuring a software project is something we still need to learn.
 
 There are three important directories:
-- DatabaseInterfaceTamim
-- SchedulerHelge
-- SimulationArsenii
+- DatabaseInterface
+- Scheduler
+- Simulation
 
 To run experiments with the scheduler you need to set up the other 
 components first. 
