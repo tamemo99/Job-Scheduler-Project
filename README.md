@@ -6,7 +6,7 @@ Humboldt University of Berlin
 
 Semesterprojekt 6: Serverless Distributed Data Processing Project
 
-This Project included a group of 5 members, each of them had a certain task/part to focus on.
+This Project was made by a group of 5 members, each of them had a certain task/part to focus on.
 
 *NOTE*: My part of this project focuses on the database and its interface. however I helped the other group members in other parts of the projects where ever they needed
 
