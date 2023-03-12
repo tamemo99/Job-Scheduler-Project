@@ -11,7 +11,7 @@ Semesterprojekt 6: Serverless Distributed Data Processing Project
 Structuring a software project is something we still need to learn.
 
 There are three important directories:
-- DatabaseInterface
+- DatabaseInterface  (created by TA) 
 - Scheduler
 - Simulation
 
