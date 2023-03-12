@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- bootstrap core-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">JoSI - Job Scheduling Intelligence</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{{ url_for('all_jobs') }}">All Jobs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('all_queue_records') }}">Current Queue</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('all_historical_records') }}">Historical Data</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('all_historic_cluster_records') }}">Cluster Data</a>
+                </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('simulation') }}">simulation</a>
+                </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                       aria-expanded="false">Add</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ url_for('add_job_form') }}">Add a Job</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('add_historicaldata_form') }}">add a Historical
+                            Record</a></li>
+                        <li><a class="dropdown-item" href="{{ url_for('add_queue_form') }}">add a Record to the
+                            Queue</a></li>
+                    </ul>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<!-- Job Table starts here -->
+
+<div class ="container">
+<h3> Historical Data </h3>
+<br>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Runtime</th>
+        <th scope="col">Containers</th>
+      <th scope="col">Date</th>
+        <th scope="col">Status</th>
+        <th scope="col">Actions</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+{% for record in records %}
+    <tr>
+    <td>{{ record.historicaldata_id }}</td>
+    <td>{{ record.runtime }}</td>
+    <td>{{ record.containers }}
+    <td>{{ record.date }}</td>
+    <td>{{ record.job_status }}
+     <td>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="{{ url_for('delete_historical_record',historicaldata_id=record.historicaldata_id) }}" type="button"
+                       class="btn   btn-danger btn-secondary" target="_blank">Delete</a>
+                    <a href="{{ url_for('update_historicaldata_form',num=record.historicaldata_id) }}" type="button"
+                       class="btn   btn-success btn-secondary" target="_blank">Edit</a>
+                </div>
+            </td>
+{% endfor %}
+
+  </tbody>
+</table>
+</div>
+
+<!-- Java Script Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
